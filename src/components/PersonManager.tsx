@@ -1,24 +1,15 @@
-import { useState } from "react"
-import type { Person } from "../types"
+import { usePersonContext } from "../contexts/PersonContext"
 import PersonForm from "./PersonForm"
 import PersonList from "./PersonList"
 import "../styles/PersonManager.css"
 
 export default function PersonManager() {
-    const [people, setPeople] = useState<Person[]>([])
-
-    const handleAddPerson = (person: Person) => {
-        setPeople([...people, person])
-    }
-
-    const handleDeletePerson = (name: string) => {
-        setPeople(people.filter((person) => person.name !== name))
-    }
+    const { people, addPerson, deletePerson } = usePersonContext()
 
     return (
         <div className="person-manager">
-            <PersonForm onAddPerson={handleAddPerson} />
-            <PersonList persons={people} onDelete={handleDeletePerson} />
+            <PersonForm onAddPerson={addPerson} />
+            <PersonList persons={people} onDelete={deletePerson} />
         </div>
     )
 }

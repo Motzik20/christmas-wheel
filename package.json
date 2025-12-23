@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "react": "^19.2.0",
+    "react-confetti": "^6.4.0",
+    "react-custom-roulette": "^1.4.1",
     "react-dom": "^19.2.0",
+    "sweetalert2": "^11.26.17",
     "react-hook-form": "^7.69.0"
   },
   "devDependencies": {
@@ -24,6 +27,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "sass-embedded": "^1.97.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
