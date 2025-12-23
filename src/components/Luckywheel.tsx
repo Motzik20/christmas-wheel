@@ -42,7 +42,6 @@ export default function LuckyWheel(): JSX.Element {
             color: 'white',       // Textfarbe (Weihnachtsrot)
             confirmButtonColor: '#15803d', // Button-Farbe (Grün)
             confirmButtonText: 'Geilo! 🎁',
-            borderRadius: '20px',
             backdrop: `
               rgba(0,0,123,0.4)
               url("/path/to/snow-animation.gif")
