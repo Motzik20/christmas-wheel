@@ -37,16 +37,13 @@ export default function LuckyWheel(): JSX.Element {
         setShowConfetti(true)
         Swal.fire({
             title: 'Frohe Weihnachten!',
-            text: 'Beni darf auspacken!',
-            background: '#1a1a1a', // Hintergrundfarbe des Popups
-            color: 'white',       // Textfarbe (Weihnachtsrot)
-            confirmButtonColor: '#15803d', // Button-Farbe (Grün)
+            text: `${data[prizeNumber].option} darf auspacken!`,
+            background: '#1a1a1a',
+            color: 'white',
+            confirmButtonColor: '#15803d',
             confirmButtonText: 'Geilo! 🎁',
             backdrop: `
               rgba(0,0,123,0.4)
-              url("/path/to/snow-animation.gif")
-              left top
-              no-repeat
             `,
             customClass: {
               popup: 'rounded-3xl border-4 border-red-600',
@@ -54,6 +51,25 @@ export default function LuckyWheel(): JSX.Element {
               confirmButton: 'px-8 py-3 rounded-full uppercase'
             }
           }).then(() => setShowConfetti(false))
+    }
+
+    function handleEndClick(): void {
+        setShowConfetti(true)
+        Swal.fire({
+            title: 'Du darfst auch!',
+            text: 'Zum schluss kommt das Beste!',
+            background: '#1a1a1a',
+            color: 'white',
+            confirmButtonColor: '#15803d', 
+            confirmButtonText: '67? 6️⃣7️⃣',
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("public/6_7_Big_Chungus_GIF.gif")
+              left top
+              no-repeat
+            `
+          }).then(() => setShowConfetti(false))
+
     }
 
     return (
@@ -70,7 +86,7 @@ export default function LuckyWheel(): JSX.Element {
                spinDuration={0.2}
             />
             {data.length > 1  && <button className="wheel-button" onClick={handleSpinCLick} disabled={mustSpin}>Drehen</button>}
-            {data.length < 2 && <button className="wheel-button"> Beenden </button>}
+            {data.length < 2 && <button className="wheel-button" onClick={handleEndClick}> Beenden </button>}
 
         </div>
     )
