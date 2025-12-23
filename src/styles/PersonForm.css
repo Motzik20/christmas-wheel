@@ -1,0 +1,53 @@
+.form-card {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+label {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color 0.25s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.error {
+  border-color: red !important;
+  border-width: 2px !important;
+}
+
+.error-message {
+  color: red !important;
+  font-size: 12px !important;
+  margin: 0;
+}
+

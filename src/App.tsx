@@ -1,9 +1,10 @@
-import './App.css'
+import './styles/App.css'
+import PersonManager from './components/PersonManager'
 
 function App() {
   return (
     <>
-      <div>Christmas Wheel</div>
+      <PersonManager />
     </>
   )
 }
