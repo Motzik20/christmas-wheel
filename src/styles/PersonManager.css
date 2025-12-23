@@ -1,9 +1,11 @@
 .person-manager {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 32px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  align-items: flex-start;
+  justify-content: center;
 }
 

@@ -11,10 +11,14 @@ export default function PersonManager() {
         setPeople([...people, person])
     }
 
+    const handleDeletePerson = (name: string) => {
+        setPeople(people.filter((person) => person.name !== name))
+    }
+
     return (
         <div className="person-manager">
             <PersonForm onAddPerson={handleAddPerson} />
-            <PersonList persons={people} />
+            <PersonList persons={people} onDelete={handleDeletePerson} />
         </div>
     )
 }
