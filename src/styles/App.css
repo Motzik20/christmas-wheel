@@ -1,7 +1,11 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
+<<<<<<< HEAD
   padding: 32px;
+=======
+  padding: 2rem;
+>>>>>>> features/Wheel-of-fortune
   text-align: center;
 }
 
