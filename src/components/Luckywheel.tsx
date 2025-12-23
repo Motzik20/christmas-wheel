@@ -4,6 +4,7 @@ import type { WheelData } from "react-custom-roulette/dist/components/Wheel/type
 import '../styles/Luckywheel.css'
 import 'sweetalert2/src/sweetalert2.scss'
 import Swal from 'sweetalert2'
+import Confetti from 'react-confetti';
 
 
 export default function LuckyWheel(): JSX.Element {
@@ -13,11 +14,13 @@ export default function LuckyWheel(): JSX.Element {
         { option: 'Motzik', style: { backgroundColor: 'white', textColor: 'black' } },
         { option: 'Vici', style: { backgroundColor: 'red', textColor: 'white' } },
     ];
+    const height = window.innerHeight
+    const width = window.innerWidth
 
     const[mustSpin, setMustSpin] = useState<boolean>(false)
     const[prizeNumber, setPrizeNumber] = useState<number>(0)
     const[data, setData] = useState<WheelData[]>(initialData)
-
+    const[showConfetti, setShowConfetti] = useState<boolean>(false)
 
     function handleSpinCLick(): void {
         if(!mustSpin){
@@ -31,16 +34,33 @@ export default function LuckyWheel(): JSX.Element {
         setMustSpin(false);
         const newData = data.filter((_, index)=> index !== prizeNumber)
         setData(newData)
+        setShowConfetti(true)
         Swal.fire({
-            title: 'Gewinner!',
-            text: `${data[prizeNumber].option} du bist mit auspacken dran!🎉`,
-            confirmButtonText: 'Geilo!'
-        })
+            title: 'Frohe Weihnachten!',
+            text: 'Beni darf auspacken!',
+            background: '#1a1a1a', // Hintergrundfarbe des Popups
+            color: 'white',       // Textfarbe (Weihnachtsrot)
+            confirmButtonColor: '#15803d', // Button-Farbe (Grün)
+            confirmButtonText: 'Geilo! 🎁',
+            borderRadius: '20px',
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("/path/to/snow-animation.gif")
+              left top
+              no-repeat
+            `,
+            customClass: {
+              popup: 'rounded-3xl border-4 border-red-600',
+              title: 'text-3xl font-serif',
+              confirmButton: 'px-8 py-3 rounded-full uppercase'
+            }
+          }).then(() => setShowConfetti(false))
     }
 
     return (
         <div className="wheel-container">
             <h1 className="wheel-header">Glücksrad</h1>
+            {showConfetti && <Confetti width={width} height={height} numberOfPieces={2000}/>}
             <Wheel
                mustStartSpinning={mustSpin}
                data={data}
@@ -48,6 +68,7 @@ export default function LuckyWheel(): JSX.Element {
                textColors={['black']}
                prizeNumber={prizeNumber}
                onStopSpinning={handleStopSpinning}
+               spinDuration={0.2}
             />
             {data.length > 1  && <button className="wheel-button" onClick={handleSpinCLick} disabled={mustSpin}>Drehen</button>}
             {data.length < 2 && <button className="wheel-button"> Beenden </button>}
