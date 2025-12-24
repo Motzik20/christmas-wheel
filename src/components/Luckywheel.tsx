@@ -53,6 +53,11 @@ export default function LuckyWheel(): JSX.Element {
         const newData = data.filter((_, index)=> index !== prizeNumber)
         setData(newData)
         setShowConfetti(true)
+        
+        // Random GIF auswählen (gif_1 bis gif_4)
+        const randomGifNumber = Math.floor(Math.random() * 6) + 1;
+        const randomGifPath = `/gif_${randomGifNumber}.gif`;
+        
         Swal.fire({
             title: 'Frohe Weihnachten!',
             text: `${data[prizeNumber].option} darf auspacken!`,
@@ -62,6 +67,9 @@ export default function LuckyWheel(): JSX.Element {
             confirmButtonText: 'Geilo! 🎁',
             backdrop: `
               rgba(0,0,123,0.4)
+              url("${randomGifPath}")
+              left top
+              no-repeat
             `,
             customClass: {
               popup: 'rounded-3xl border-4 border-red-600',
